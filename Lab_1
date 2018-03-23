@@ -1,0 +1,101 @@
+Під час виконання даної лабораторної роботи я вніс зміни до наступних файлів: about_classes.rb, about_iteration.rb, about_strings.rb, about_sandwich_code.rb, about_message_passing.rb.
+
+У файлі about_classes.rb в методі nsd я реалізував алгоритм Евкліда для пошуку найменшого спільного дільника двох чисел, та написав метод із тестами. Я навчився працювати із класами та методами.
+  class Evklid
+    def nsd (a,b)
+      while (a>0 && b>0)
+        if(a>b) 
+          a=a%b
+        else 
+          b=b%a
+        end
+      end
+      a+b
+    end
+  end
+
+  def test_nsd
+    alg =Evklid.new
+    assert_equal 2,alg.nsd(6,14)
+    assert_equal 3,alg.nsd(6,9)
+    assert_equal 9,alg.nsd(18,27)
+  end
+
+
+У файлі about_iteration.rb я написав метод, який отримує масив і виводить число, рівне сумі парних елементів цього масиву, та метод із тестами. Я навчився працювати з ітератором each та масивами.
+    def sum_par a
+    s=0
+    a.each do |item| 
+      if(item%2==0)
+        s+=item
+      end
+    end
+    s
+  end
+
+  def test_sum
+    x=[1,2,3,4,5,6,7,8]
+    y=[3,9,17]
+    z=[]
+    assert_equal 20,sum_par(x)
+    assert_equal 0,sum_par(y)
+    assert_equal 0,sum_par(z)
+  end
+
+
+У файлі about_strings.rb я написав метод, який отримує строку і повертає іншу строку, яка складається з першого і останнього слів отриманої, записані через кому. Я навчився працювати із строками.
+
+  def first_end s
+    a=s.split
+    b=[a[0],a[a.length-1]]
+    b.join(", ")
+  end
+
+  def test_first_end
+    assert_equal "aaa, ccc",first_end("aaa bbb ccc")
+    assert_equal "ddt, tyut",first_end("ddt hfhgh, 76858 jhfjj? tyut")
+  end
+
+
+У файлі about_sandwich_code.rb я написав метод, який отримує назву файлу і літеру, а в процесі роботи рахує і повертає кількість рядків файлу, які починаються на вказану літеру. Я навчився працювати із sandwich code.
+
+
+  def first_x(file_name,x)
+    file = open(file_name)
+    i=0
+    while line = file.gets
+      if line[0]==x
+        i=i+1
+      end
+    end
+    i
+  ensure
+    file.close if file
+  end
+
+  def test_first_x
+    assert_equal 2,first_x("example_file.txt",'t')
+    assert_equal 1,first_x("example_file.txt",'i')
+    assert_equal 0,first_x("example_file.txt",'c')
+  end
+
+У файлі about_message_passing.rb я написав метод, який перевіряє, чи отримане число просте. Я навчився працювати із циклами, методами і умовними операторами.
+
+  def prost?(a)
+    i=2
+    b=true
+    while i<a
+      if a%i==0
+        b=false
+      end
+      i=i+1
+    end
+    b
+  end
+
+  def test_prost
+    assert_equal true,prost?(7)
+    assert_equal false,prost?(16)
+  end 
+
+
